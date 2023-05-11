@@ -1,4 +1,4 @@
-export const PROJECT_REVISION = '{{PROJECT_REVISION}}';
+
 
 let SUCCESS_HANDLERS = [];
 let ERROR_HANDLERS = [];
