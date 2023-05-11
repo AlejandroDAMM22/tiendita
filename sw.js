@@ -12,7 +12,7 @@ self.addEventListener('install', event=>{
             const cacheInstallEstatico = caches.open(cache_estatico) //open crea y abre el cache
               .then(cache=>{
                     return cache.addAll([
-                        'index.html'
+                        'index.html',
                         'pages/Offline.html',
                         'pages/about.html',
                         'pages/editarProducto.html',
