@@ -13,25 +13,25 @@ self.addEventListener('install', event=>{
               .then(cache=>{
                     return cache.addAll([
                         'index.html'
-//                         'pages/Offline.html',
-//                         'pages/about.html',
-//                         'pages/editarProducto.html',
-//                         'pages/nuevaCategoria.html',
-//                         'pages/nuevaLista.html',
-//                         'pages/PaginaInicial.html',
-//                         'pages/verProductos.html',
-//                         'pages/nuevoProducto.html',
-//                         'img/No_Image.jpg',
-//                         'img/git.png',
-//                         'img/offline.jpg',
-//                         'img/imgSubir.png',
-//                         'img/icono.ico',
-//                         'js/app.js',
-//                         'js/base.js',
-//                         'js/funciones.js',
-//                         'js/pouchdb-8.0.1.min.js',
-//                         'js/funcionamientoBD.js',
-//                         'Manifest.json'
+                        'pages/Offline.html',
+                        'pages/about.html',
+                        'pages/editarProducto.html',
+                        'pages/nuevaCategoria.html',
+                        'pages/nuevaLista.html',
+                        'pages/PaginaInicial.html',
+                        'pages/verProductos.html',
+                        'pages/nuevoProducto.html',
+                        'img/No_Image.jpg',
+                        'img/git.png',
+                        'img/offline.jpg',
+                        'img/imgSubir.png',
+                        'img/icono.ico',
+                        'js/app.js',
+                        'js/base.js',
+                        'js/funciones.js',
+                        'js/pouchdb-8.0.1.min.js',
+                        'js/funcionamientoBD.js',
+                        'Manifest.json'
                        
                     ]);
 
