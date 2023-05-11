@@ -11,7 +11,7 @@ const cache_inmutable = 'inmutableV3';
 self.addEventListener('install', event=>{
             const cacheInstallEstatico = caches.open(cache_estatico) //open crea y abre el cache
               .then(cache=>{
-                    return cache.addAll(['
+                    return cache.addAll([
                         
                         'index.html',
                         'pages/Offline.html',
