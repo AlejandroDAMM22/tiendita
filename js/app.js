@@ -36,13 +36,6 @@ if ('serviceWorker' in navigator) {
 }
 
 
-export function addSuccessHandler(func) {
-  SUCCESS_HANDLERS.push(func);
-}
-
-export function addErrorHandler(func) {
-  ERROR_HANDLERS.push(func);
-}
 
 
 
