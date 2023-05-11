@@ -1,58 +1,48 @@
-if (navigator.serviceWorker) {
-   // console.log("Si tiene Sw");
+export const PROJECT_REVISION = '{{PROJECT_REVISION}}';
 
-   navigator.serviceWorker.register('/sw.js');
+let SUCCESS_HANDLERS = [];
+let ERROR_HANDLERS = [];
 
+if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('{{ROOT_URL}}{{SERVICE_WORKER_FILENAME}}', { scope: '{{ROOT_URL}}' })
+    .then(function(reg) {
+      let current = Promise.resolve();
+
+      for (let i = 0, len = SUCCESS_HANDLERS.length; i < len; i++) {
+        current = current.then(function() {
+          return SUCCESS_HANDLERS[i](reg);
+        });
+      }
+
+      return current
+        .then(function() {
+          console.log('Service Worker registration succeeded. Scope is ' + reg.scope);
+        });
+    })
+    .catch(function(error) {
+      let current = Promise.resolve();
+
+      for (let i = 0, len = ERROR_HANDLERS.length; i < len; i++) {
+        current = current.then(function() {
+          return ERROR_HANDLERS[i](error);
+        });
+      }
+
+      return current
+        .then(function() {
+          console.log('Service Worker registration failed with ' + error);
+        });
+    });
 }
 
 
+export function addSuccessHandler(func) {
+  SUCCESS_HANDLERS.push(func);
+}
 
-// if (window.caches) {
-//    caches.open('Cachev1');
-//    //Open crea y abre el cache
-//    caches.open('Cachev2');
-
-//    //Sirve ara busacr
-
-//    caches.has('CacheV2').then(console.log);
-
-
-//    //Elimina el cache
-//    caches.delete('Cachev2');
-
-//    caches.has('CacheV2').then(console.log);
-//    //busqueda en pluaral busquedad de cachec
-//    caches.open('CacheV3').then(cache => {
-//       //cache.add('/index.html');
-//       //Agrega al cache
-//       cache.addAll([
-//          '/index.html',  //3
-//          'img/hola.png',  //2
-//          '/css/style.css'
-//       ]).then(()=>{
-
-//          cache.put('index.html', new Response('Index nuevo'));
-//          //Agrega algo o sobrescribe algo el put
-//       });
-
-
-
-
-//       cache.match('/index.html').then(res => {
-//          //busqueda dentro del cache (singular)
-
-//          res.text().then(console.log);
-//       })
-
-//       caches.keys().then(key=>{
-//          console.log(key);
-//       })
-
-
-
-
-//    });
-
+export function addErrorHandler(func) {
+  ERROR_HANDLERS.push(func);
+}
 
 
 
